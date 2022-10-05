@@ -1,0 +1,47 @@
+<div class="row">
+  <app-cabecera></app-cabecera>
+</div>
+
+
+<div class="alert alert-warning mt-4" role="alert">
+ <h4>Alumno: {{this.alumno}}</h4>
+ <h4>Examen: {{this.nomexamen}}</h4>
+</div>
+
+
+<div class="row justify-content-md-center" id="content">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <ng-container id="content">
+      <h2 class="text-center text-light m-2">
+        <span tooltip="Ir a examenes" placement="top" [hide-delay]="0" class="m-1">
+          <button type="button" class="btn btn-warning m-1"  [routerLink]="['/ResultadosExa/'+this.id_examen +'/'+ this.tipo_prog + '/' + this.programa+ '/' + this.profesor]"><i
+            class="fa-solid fa-circle-arrow-left color-morado"></i></button>
+        </span> Resultado detalle</h2>
+      <table class="table table-sm table-bordered text-ligh">
+
+
+
+        <thead class="table-dark">
+          <tr class="text-center">
+            <th>Enunciado pregunta</th>
+            <th>Tipo pregunta</th>
+            <th>Respuesta del alumno</th>
+            <th>Respuesta correcta</th>
+            <th>Calificación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center text-white" *ngFor="let det of this.detalle">
+            <td>{{ det.enunciado }}</td>
+            <td>{{ det.tipo_pregunta }}</td>
+            <td>{{ det.resp_alumno }}</td>
+            <td>{{ det.resp_true }}</td>
+            <td>{{ det.calificacion }}</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </ng-container>
+  </div>
+</div>
+

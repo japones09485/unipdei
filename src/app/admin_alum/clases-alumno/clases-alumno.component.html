@@ -1,0 +1,22 @@
+<div  id="content">
+
+  <div class="row">
+    <app-cabecera></app-cabecera>
+</div>
+<div>
+    <h1 class="card-header text-center text-white" style="padding-top:140px;"><a (click)="pag_principal(1,this.user.usu_id,this.user.usu_perfil)"><i class="fas fa-arrow-alt-circle-left float-left text-light"></i></a>Clases</h1>
+    <div class="row row-cols-1 row-cols-md-3 m-5">
+        <div class="col mb-4" *ngFor="let cla of clases">
+            <div class="card border-danger content" id="card-vid">
+              <h3 class="card-title text-danger text-center m-2">{{cla.clas_nombre}}</h3>
+                <div class="card-body">
+                   <p class="text-dark">{{cla.clas_descripcion}}</p>
+                </div>
+                <div class="card-footer">
+
+                  <button type="button" class="btn btn-danger" (click)="IngresarClase(cla)"><i class="fa-solid fa-video p-1"></i>Ingresar a clase</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

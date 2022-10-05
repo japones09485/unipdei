@@ -1,0 +1,119 @@
+<div class="container-fluid bg-light">
+  <div class="row">
+      <div class="col-3">
+          <app-menulateral></app-menulateral>
+      </div>
+      <div class="col-9" style="margin-top: 130px;">
+        <app-cabecera></app-cabecera>
+        <div class="login-dark">
+            <form method="post" [formGroup]="frmCr" (ngSubmit)="guardarCurso()">
+                <h2 class="text-center color-gold" style="margin-bottom: 50px;"><i class="fa-solid fa-building-columns m-1"></i>Curso</h2>
+                <div class="form-group row mt-3">
+                  <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Nombre</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" formControlName="nombre">
+                  </div>
+              </div>
+
+              <div class="form-group row mt-3">
+                <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Descripción de la carrera</label>
+                <div class="col-sm-10">
+                    <textarea type="text" class="form-control" formControlName="descripcion" rows="5"></textarea>
+
+                </div>
+            </div>
+
+            <div class="form-group row mt-3">
+              <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Estado</label>
+              <div class="col-sm-10">
+                <select formControlName="estado" class="form-control" >
+                  <option value="1">Activo</option>
+                  <option value="1">Inactivo</option>
+                </select>
+
+              </div>
+          </div>
+
+          <div class="form-group row mt-3">
+            <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Link (solo argentina)</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="link_arg">
+            </div>
+        </div>
+
+        <div class="form-group row mt-3">
+          <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Link de pago</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" formControlName="link_pago">
+          </div>
+      </div>
+
+          <div class="form-group row mt-3"  *ngIf="edit">
+            <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Cambiar Imagenes</label>
+            <div class="col-sm-10">
+              <input type="checkbox" class="form-check-input" (change)=" cambiar_imagenes($event)">
+            </div>
+        </div>
+
+          <div class="form-group row mt-3" *ngIf="this.editfotos">
+            <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Cambiar</label>
+               <div class="custom-file col-sm-10">
+                <input type="file" class="custom-file-input form-control" (change)="agregarArchivo($event,1)" name="ft_1"/>
+               </div>
+          </div>
+          <div class="form-group row mt-3" *ngIf="this.editfotos">
+            <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Foto 2</label>
+               <div class="custom-file col-sm-10">
+                <input type="file" class="custom-file-input form-control" (change)="agregarArchivo($event,2)" name="ft_2"/>
+               </div>
+          </div>
+
+          <div class="form-group row mt-3" *ngIf="this.editfotos">
+            <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Foto 3</label>
+               <div class="custom-file col-sm-10">
+                <input type="file" class="custom-file-input form-control" (change)="agregarArchivo($event,3)" name="ft_3 "/>
+               </div>
+          </div>
+
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" *ngIf="edit">
+            <div class="carousel-inner">
+
+              <div class="carousel-item active">
+                <img src="{{pathImg + this.curso.foto1}}" class="d-block w-100 img-carousel" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="{{pathImg + this.curso.foto2}}" class="d-block w-100 img-carousel" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="{{pathImg + this.curso.foto3}}" class="d-block w-100 img-carousel" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+
+
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <div class="form-group row m-3" style=" text-align:center; margin-top: 50px !important;">
+
+               <div class="custom-file col-sm-12">
+                <button style="max-width: 105% !important;" type="submit" class="btn btn-primary btn-lg btn-block bg-gold color-morado img-fluid" *ngIf="frmCr.valid"> <i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+
+               </div>
+
+               <div class="alert bg-gold img-fluid btn-lg m-3 color-morado" role="alert" *ngIf="mostrarMsj">
+                <i class="fa-solid fa-circle-check"></i> Curso creada exitosamente
+              </div>
+          </div>
+
+      </form>
+        </div>
+      </div>
+  </div>
+</div>
+

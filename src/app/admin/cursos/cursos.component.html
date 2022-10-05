@@ -1,0 +1,142 @@
+<div class="container-fluid bg-light">
+  <div class="row">
+    <div class="col-3">
+      <app-menulateral></app-menulateral>
+    </div>
+    <div class="col-9" style="margin-top: 90px;">
+      <app-cabecera></app-cabecera>
+      <h1 class="text-center color-gold"> <i class="fa-solid fa-school m-1"></i> Cursos</h1>
+      <table class="table bg-color">
+        <thead>
+          <tr>
+
+            <th scope="col" class="color-gold">Acciones</th>
+            <th scope="col" class="color-gold">Nombre</th>
+            <th scope="col" class="color-gold">Descripción</th>
+            <th scope="col" class="color-gold">Fecha Creación</th>
+            <th scope="col" class="color-gold">Estado</th>
+            <th scope="col" class="color-gold"><button type="button" class="btn bg-gold" routerLink="/AdminCurso/0"><i
+                  class="fa-solid fa-folder-plus color-morado"></i></button></th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let car of cursos ;let i=index">
+
+            <td class="text-table">
+              <div class="btn-group" role="group" aria-label="Basic example">
+
+                <span tooltip="Editar" placement="top" [hide-delay]="0" class="m-1">
+
+                  <button type="button" class="btn btn-warning m-1" routerLink="/AdminCurso/{{car.id}}"><i
+                    class="fa-solid fa-pen-to-square color-morado"></i></button>
+                </span>
+
+
+
+                <!-- Button trigger modal -->
+
+
+                <span tooltip="Eliminar" placement="top" [hide-delay]="0" class="m-1">
+
+                  <button type="button" class="btn btn-danger m-1 color-morado" data-toggle="modal"
+                  [attr.data-target]="'#staticBackdrop'+car.id">
+                  <i class="fa-solid fa-trash color-morado"></i>
+                </button>
+                </span>
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop{{car.id}}" data-backdrop="static" tabindex="-1" role="dialog"
+                  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content bg-color color-gold">
+                      <div class="modal-header text-center">
+                        <h3 class="modal-title" id="staticBackdropLabel">Mensaje de confirmación</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        ¿Esta seguro de eliminar carrera {{car.nombre}}?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn bg-gold color-morado" data-dismiss="modal"
+                          (click)="eliminarcarrera(car.id)"><i class="fa-solid fa-check-double"></i>
+                          Confirmar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+                <span tooltip="Inscribir profesor" placement="top" [hide-delay]="0" class="m-1">
+
+                   <!-- Button trigger modal inscripcion-->
+                   <button type="button" class="btn btn-info color-morado m-1" data-toggle="modal"
+                   [attr.data-target]="'#inscripcion'+car.id">
+                   <i class="fa-solid fa-user-shield color-morado"></i>
+                 </button>
+                </span>
+
+                <!-- Modal -->
+                <div class="modal fade" id="inscripcion{{car.id}}" data-backdrop="static" tabindex="-1" role="dialog"
+                  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content bg-color color-gold">
+                      <div class="modal-header text-center">
+                        <h3 class="modal-title" id="inscripcion">Mensaje de confirmación</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <form [formGroup]="frmProfIns" class="m-2" (ngSubmit)="InscripcionProfesor(car.id,2)">
+                            <div class="form-group row">
+                                <p>Ingrese el correo electrónico del profesor que desea registrar para en esta curso.
+                                </p>
+                            </div>
+
+                            <div class="form-group row">
+                                <input type="text" class="form-control" formControlName="correo" />
+                            </div>
+
+                            <div class="form-group row m-1">
+                                <button type="submit" *ngIf="frmProfIns.valid" class="btn btn-warning btn-block">Inscribir</button>
+                            </div>
+
+                        </form>
+                        </form>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+                <span tooltip="Profesores inscritos" placement="top" [hide-delay]="0" class="m-1">
+
+                  <button type="button" class="btn btn-light m-1" routerLink="/Programas_prof/{{car.id}}/2"><i
+                    class="fa-solid fa-pen-to-square color-morado"></i></button>
+
+
+                    </span>
+
+
+              </div>
+            </td>
+            <td class="text-table">{{car.nombre}}</td>
+            <td class="text-table">{{car.descripcion}}</td>
+            <td class="text-table">{{car.fecha_creacion}}</td>
+            <td class="text-table">{{estado(car.estado)}}</td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

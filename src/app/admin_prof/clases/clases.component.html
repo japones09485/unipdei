@@ -1,0 +1,71 @@
+
+
+
+  <div class="row">
+    <app-cabecera></app-cabecera>
+</div>
+<div class="row justify-content-md-center" id="content">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <ng-container id="content">
+
+
+        <h2 class="text-center text-light m-2" id="title">
+          <span tooltip="Ir a inicio" placement="top" [hide-delay]="0" class="m-1" [routerLink]="['/Programasprf/' +  + this.tipo_prog + '/' + this.profesor + '/' + this.user.usu_perfil]">
+            <button type="button" class="btn btn-warning m-1" ><i class="fa-sharp fa-solid fa-headset"></i></button>
+          </span> Mis clases</h2>
+
+      <table class="table table-sm table-bordered text-ligh">
+
+
+        <thead class="table-dark">
+          <tr class="text-center">
+            <th >
+
+                <button  type="button" class="btn btn-danger btn-sm" (click)="nuevaClase(0,this.tipo_prog,this.profesor,this.programa,0)">Nueva
+                  Clase</button>
+            </th>
+
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Profesor</th>
+            <th>Fecha inicio</th>
+            <th>Hora</th>
+            <th>Estado</th>
+            <th>ingreso</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+
+          <tr class="text-center text-white" *ngFor="let cla of clases index as i;">
+            <td >
+              <button type="button" class="btn btn-danger btn-sm m-1
+              " (click)="eliminarClase(cla.clas_id,this.tipo_prog,this.profesor,this.programa)">
+      <i class="fas fa-trash-alt"></i>
+    </button>
+    <button type="button" class="btn btn-success btn-sm" (click)="nuevaClase(cla.clas_id,this.tipo_prog,this.profesor,this.programa,1)"> <i
+        class="far fa-edit"></i></button>
+            </td>
+            <td>{{cla.clas_id}}</td>
+            <td>{{cla.clas_nombre}}</td>
+            <td>{{cla.clas_descripcion}}</td>
+            <td>{{this.dataprofesor.pro_nombres}} {{this.dataprofesor.pro_apellidos}}</td>
+            <td>{{cla.clas_fecha_inicio}}</td>
+            <td>{{cla.clas_hora}}</td>
+            <td  *ngIf="cla.estado == 0"><button type="button" class="btn btn-success" (click)="cambiarestado(cla.clas_id,cla.estado)"><i class="fa-solid fa-video p-1"></i> Iniciar en vivo</button></td>
+            <td *ngIf="cla.estado == 1"><button type="button" class="btn btn-danger" (click)="cambiarestado(cla.clas_id,cla.estado)"> <i class="fa-sharp fa-solid fa-video-slash"></i> Detener en vivo</button></td>
+
+            <td  *ngIf="cla.estado == 0"> No disponible</td>
+            <td *ngIf="cla.estado == 1">  <button type="button" class="btn btn-warning" (click)="IngresarClase(cla)"> <i class="fa-solid fa-video p-1"></i> Ingresar</button></td>
+
+          </tr>
+
+
+
+        </tbody>
+      </table>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<div class="container-fluid bg-light">
+  <div class="row">
+      <div class="col-3">
+          <app-menulateral></app-menulateral>
+      </div>
+      <div class="col-9" style="margin-top: 130px;">
+        <app-cabecera></app-cabecera>
+        <div class="login-dark">
+            <form method="post" [formGroup]="frmCr" (ngSubmit)="guardarAlumno()">
+                <h2 class="text-center color-gold" style="margin-bottom: 50px;"><i class="fa-solid fa-school m-1"></i> Alumnos </h2>
+
+                <div class="form-group row mt-3">
+                  <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Identificación</label>
+                  <div class="col-sm-10">
+                      <input type="number" class="form-control" formControlName="identificacion">
+                  </div>
+              </div>
+
+                <div class="form-group row mt-3">
+                  <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Nombres</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" formControlName="nombre">
+                  </div>
+              </div>
+
+              <div class="form-group row mt-3">
+                <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Apellidos</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="apellidos">
+                </div>
+              </div>
+
+               <div class="form-group row mt-3">
+                  <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Email</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" formControlName="email">
+                  </div>
+              </div>
+
+              <div class="form-group row mt-3">
+                <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Télefono</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="telefono">
+                </div>
+             </div>
+
+             <div class="form-group row mt-3">
+              <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Estado</label>
+              <div class="col-sm-10">
+                <select formControlName="estado" class="form-control" >
+                  <option value="1">Activo</option>
+                  <option value="1">Inactivo</option>
+                </select>
+
+              </div>
+          </div>
+
+          <div class="form-group row row mt-3">
+            <label for="exampleInputEmail1" class="form-label col-2 color-gold">Pais</label>
+            <div class="col-8">
+                <select class="form-control " formControlName="pais" (change)="banderaPais(this.seleccionado)" [(ngModel)]="seleccionado">
+                    <option *ngFor="let item of paisesList" [ngValue]="item.iso">{{ item.nombre }}
+            </option>
+        </select>
+            </div>
+            <div class="col-2">
+                <img *ngIf="imgCountry" [src]="imgCountry" class="avatar" />
+            </div>
+        </div>
+
+          <div class="form-group row m-3" style=" text-align:center; margin-top: 50px !important;">
+
+               <div class="custom-file col-sm-12">
+                <button style="max-width: 105% !important;" type="submit" class="btn btn-primary btn-lg btn-block bg-gold color-morado img-fluid" *ngIf="frmCr.valid"> <i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+
+               </div>
+
+               <div class="alert bg-gold img-fluid btn-lg m-3 color-morado" role="alert" *ngIf="mostrarMsj">
+                <i class="fa-solid fa-circle-check"></i> {{this.mensaje}}
+              </div>
+          </div>
+
+      </form>
+        </div>
+      </div>
+  </div>
+</div>
+

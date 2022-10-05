@@ -1,0 +1,14 @@
+#content {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../../assets/img/fondo_profe.jpg');
+  overflow: scroll;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position:fixed;
+    margin-top: 40px
+}
+
+#card-vid{
+  background-color: #fec400;
+  opacity: 0.8;
+}

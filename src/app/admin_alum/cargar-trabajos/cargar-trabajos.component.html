@@ -1,0 +1,42 @@
+
+<div class="row justify-content-md-center" id="content">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+
+    <div class="row">
+      <app-cabecera></app-cabecera>
+  </div>
+
+      <div class="new">
+          <ng-container id="content">
+            <h2 class="text-center text-light m-2">
+              <span tooltip="Ir a trabajos" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-warning m-1"  [routerLink]="['/prof_trabajos/'+2+'/'+ this.tipo_prog + '/' + this.profesor+ '/' + this.programa+'/'+2]"><i
+                  class="fa-solid fa-circle-arrow-left color-morado"></i></button>
+              </span>Subir trabajo</h2>
+
+              <form [formGroup]="frmClasCreator" class="m-5 border p-5" (ngSubmit)="crearTrabajo()">
+
+                  <div class="form-group row">
+                      <label for="exampleInputEmail1" class="form-label col-sm-2 text-light">Comentarios adicional</label>
+                      <div class="col-sm-10">
+                          <textarea type="text" class="form-control m-1" formControlName="comentario"></textarea>
+                      </div>
+                  </div>
+
+                  <div class="form-group row mt-3" >
+                    <label for="exampleInputEmail1" class="form-label col-sm-2 ">Archivo</label>
+                       <div class="custom-file col-sm-10">
+                        <input type="file" class="custom-file-input form-control" (change)="agregarArchivo($event,1)" name="ft_1"/>
+                       </div>
+                  </div>
+
+                  <div class="alert alert-warning m-1" role="alert" *ngIf=" this.valinamearchivo">
+                  Ha cargado el archivo: {{this.namearchivo}}, aun puede cambiarlo.
+                  </div>
+
+                  <button type="submit"  *ngIf="frmClasCreator.valid" class="btn btn-danger btn-block">Guardar</button>
+              </form>
+          </ng-container>
+      </div>
+  </div>
+</div>

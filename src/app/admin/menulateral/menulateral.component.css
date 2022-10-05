@@ -1,0 +1,18 @@
+.list-group-item{
+  opacity: .5;
+  background-color:  rgb(110, 110, 110);
+  color: #fff;
+  text-align: center;
+}
+
+.info{
+    margin-top: 50px;
+}
+
+.lin-gold{
+  text-decoration: underline;
+}
+
+.bg-cerrar{
+  background-color:rgb(23, 5, 128) !important;
+}

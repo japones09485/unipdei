@@ -1,0 +1,91 @@
+<div class="container-fluid bg-light" id="content">
+  <div class="row">
+      <app-cabecera></app-cabecera>
+  </div>
+
+  <div class="container mt-5 mb-3" [ngClass]="this.user.usu_perfil == 2 ? 'contenedor_morado' : 'contenedor_amarillo'"  id = "contenedor">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card p-3 mb-2">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                        <div class="icon"><i class="fa-solid fa-building-columns m-1 color-morado"></i> </div>
+                        <div class="ms-2 c-details">
+                            <h6 class="mb-0 color-morado">Carreras</h6>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mt-5">
+                    <h4 class="heading text-dark">Carreras a cargo</h4>
+                    <div class="mt-5">
+                        <div class="progress">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="mt-3"> <span class="text1 color-morado m-4">{{this.cant_carreras}} Carreras inscrito</span> </div>
+                        <div>
+                          <button *ngIf="this.user.usu_perfil == 2" type="button" (click)="programas(1,this.user.usu_id,this.user.usu_perfil)" class="btn btn-lg bg-color text-white">Ver todas <i class="fa-solid fa-magnifying-glass-plus m-1 color-morado"></i></button>
+                          <button *ngIf="this.user.usu_perfil == 3" type="button" (click)="programas(1,this.user.usu_id,this.user.usu_perfil)" class="btn btn-lg btn-warning text-white">Ver todas <i class="fa-solid fa-magnifying-glass-plus m-1 color-morado"></i></button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3 mb-2">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                        <div class="icon"> <i class="fa-solid fa-school m-1 color-morado"></i> </div>
+                        <div class="ms-2 c-details">
+                            <h6 class="mb-0 color-morado">Cursos</h6>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mt-5">
+                    <h3 class="heading text-dark">Cursos a cargo</h3>
+                    <div class="mt-5">
+                        <div class="progress">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="mt-3 color-morado"> <span class="text1">{{this.cant_cursos}} cursos a cargo</span> </div>
+                        <div>
+                          <button *ngIf="this.user.usu_perfil == 2" type="button" (click)="programas(2,this.user.usu_id,this.user.usu_perfil)" class="btn btn-lg bg-color text-white">Ver todos <i class="fa-solid fa-magnifying-glass-plus m-1 color-morado"></i></button>
+                          <button *ngIf="this.user.usu_perfil == 3" type="button" (click)="programas(2,this.user.usu_id,this.user.usu_perfil)" class="btn btn-lg btn-warning text-white">Ver todos <i class="fa-solid fa-magnifying-glass-plus m-1 color-morado"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3 mb-2">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                        <div class="icon"> <i class="fa-solid fa-book-bookmark m-1 color-morado"></i> </div>
+                        <div class="ms-2 c-details">
+                            <h6 class="mb-0 color-morado">Diplomados</h6>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mt-5">
+                    <h4 class="heading text-dark">Diplomados a cargo</h4>
+                    <div class="mt-5">
+                        <div class="progress" >
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="mt-3 color-morado"> <span class="text1">{{this.cant_diplomados}} diplomados a cargo</span> </div>
+                        <div>
+                          <button *ngIf="this.user.usu_perfil == 2" (click)="programas(3,this.user.usu_id,this.user.usu_perfil)" type="button" class="btn btn-lg bg-color text-white">Ver todos <i class="fa-solid fa-magnifying-glass-plus m-1 color-morado"></i></button>
+                          <button *ngIf="this.user.usu_perfil == 3" type="button" (click)="programas(3,this.user.usu_id,this.user.usu_perfil)" class="btn btn-lg btn-warning text-white">Ver todos <i class="fa-solid fa-magnifying-glass-plus m-1 color-morado"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>

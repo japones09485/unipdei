@@ -1,0 +1,51 @@
+<div  id="content">
+
+  <div class="row">
+    <app-cabecera></app-cabecera>
+</div>
+
+
+<body class="body" >
+  <h2 class="text-center text-light m-2">
+    <span tooltip="Ir al inicio" placement="top" [hide-delay]="0" class="m-1">
+      <button type="button" class="btn btn-warning m-1"  [routerLink]="['/Homerprof/']"><i
+        class="fa-solid fa-circle-arrow-left color-morado"></i></button>
+    </span>Examenes</h2>
+
+
+  <div class="py-5">
+    <div class="container">
+      <div class="row hidden-md-up">
+        <div class="col-md-4" *ngFor="let exa of examenes">
+          <div class="card m-3" style="width: 18rem;">
+            <div class="bg-secondary">
+
+            </div>
+
+            <hr size="2px" color="black" />
+            <div class="card-body">
+              <h5 class="card-title text-warning">{{exa.nombre}}</h5>
+              <p class="card-title">{{exa.descripcion}}</p>
+            </div>
+
+
+            <div class="card-footer">
+
+              <div class="card-footer text-muted bg-dark">
+               <p class="text-warning mt-1">  Duración: {{exa.duracion}} minutos. </p>
+              </div>
+
+              <span tooltip="Examenes" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-warning m-1" (click)="Presentarex(exa.id_examen,this.tipo_prog,this.profesor,this.programa,this.user.usu_id)">Presentar <i class="fas fa-fast-forward"></i>
+                </button>
+              </span>
+
+
+            </div>
+          </div>
+        </div>
+      </div><br>
+    </div>
+  </div>
+</body>
+</div>

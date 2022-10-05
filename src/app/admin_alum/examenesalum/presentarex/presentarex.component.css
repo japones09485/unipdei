@@ -1,0 +1,35 @@
+#conferencia {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../../../../assets/img/fondo_profe.jpg") !important;
+}
+
+#form_pres{
+  border: red 2px solid;
+  margin: 20px;
+  padding: 10px;
+}
+
+#pregunta_b{
+  border: rgb(252, 115, 24) 2px solid;
+  margin: 20px;
+  padding: 10px;
+}
+
+p {
+  color:rgb(22, 22, 22) !important;
+  font-size:20px;
+  font-family:Georgia;
+
+}
+
+
+label{
+  color: rgb(192, 46, 197) !important;
+  font-size:20px;
+  font-family:Georgia;
+
+}
+
+.bg-form-preg{
+  background-color: #fbc309;
+  opacity: 0.9;
+}

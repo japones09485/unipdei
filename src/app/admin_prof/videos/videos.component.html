@@ -1,0 +1,75 @@
+
+
+
+  <div class="row">
+    <app-cabecera></app-cabecera>
+</div>
+<div class="row justify-content-md-center" id="content">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <ng-container id="content">
+
+        <h2 class="text-center text-light m-2" >
+          <span tooltip="Ir a inicio" placement="top" [hide-delay]="0" class="m-1" [routerLink]="['/Programasprf/' +  + this.tipo_prog + '/' + this.profesor + '/' + this.user.usu_perfil]">
+            <button type="button" class="btn btn-warning m-1" ><i
+              class="fa-solid fa-circle-arrow-left color-morado"></i></button>
+          </span> Mis videos</h2>
+
+      <table class="table table-sm table-bordered text-ligh">
+
+
+        <thead class="table-dark">
+          <tr class="text-center">
+            <th >
+              <button type="button" class="btn btn-danger btn-sm" (click)="nuevoVideo(0,this.tipo_prog,this.profesor,this.programa)">Nuevo
+                Documento</button>
+
+            </th>
+
+            <th>Titulo</th>
+            <th>Descripción</th>
+            <th>Profesor</th>
+            <th>Fecha creacion</th>
+            <th>Ruta</th>
+            <th>Estado</th>
+
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr class="text-center text-white" *ngFor="let vi of videos index as i;">
+            <td *ngIf="this.tipo_edit==1">
+              <button type="button" class="btn btn-danger btn-sm m-1
+              " (click)="eliminarVideo(vi.vid_id,this.tipo_prog,this.profesor,this.programa)">
+      <i class="fas fa-trash-alt"></i>
+    </button>
+    <button type="button" class="btn btn-success btn-sm" (click)="nuevoVideo(vi.vid_id,this.tipo_prog,this.profesor,this.programa)"> <i
+        class="far fa-edit"></i></button>
+            </td>
+
+            <td>
+                <button type="button" class="btn btn-danger btn-sm m-1
+                " (click)="eliminarVideo(vi.vid_id,this.tipo_prog,this.profesor,this.programa)">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+
+              <button type="button" class="btn btn-success btn-sm" (click)="nuevoVideo(vi.vid_id,this.tipo_prog,this.profesor,this.programa)"> <i
+              class="far fa-edit"></i></button>
+            </td>
+
+            <td>{{vi.vid_titulo}}</td>
+            <td>{{vi.vid_descripcion}}</td>
+            <td>{{this.dataprofesor.pro_nombres}} {{this.dataprofesor.pro_apellidos}}</td>
+            <td>{{vi.vid_fecha_creacion}}</td>
+            <td>{{vi.vid_ruta}}</td>
+            <td>
+              <button type="button" class="btn btn-success btn-sm" (click)="cambiarestado(vi.vid_id,vi.vid_estado)" *ngIf="vi.vid_estado==0"> Activar</button>
+              <button type="button" class="btn btn-danger btn-sm" (click)="cambiarestado(vi.vid_id,vi.vid_estado)" *ngIf="vi.vid_estado==1"> Desactivar</button>
+            </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+.body{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../../assets/img/fondo_profe.jpg');
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position:fixed;
+  margin-top: 40px;
+
+}
+
+.car-info{
+  border-color:rgb(107, 12, 231);
+}
+
+.descripcion{
+  margin: 10px;
+  font-family: 'Open Sans !important';
+  font-size: 20px;
+  color: rgb(37, 37, 37);
+  line-height: 22px;
+
+}
+
+.pr_pro{
+object-fit: cover !important;
+height: 200px;
+max-width: 300px;
+padding:20px;
+border-color: rgb(12, 12, 11);
+}
+
+.titulo{
+  margin-top: 40px;
+  font-size: 70px;
+  color: rgb(107, 12, 231);
+}
+
+
+.titulo-card{
+
+  color: rgb(107, 12, 231);
+}
+
+.btn-info{
+ background: rgb(107, 12, 231) !important;
+ border-color: rgb(69, 0, 158);
+ color: white;
+}
+
+#gfg{
+  margin:40px;
+  width:100px;
+  height:100px;
+
+}
+
+p{
+  color:black;
+}
+
+.linea {
+  border-top: 100px solid black;
+  height: 2px;
+  max-width: 200px;
+  padding: 0;
+  margin: 20px auto 0 auto;
+}

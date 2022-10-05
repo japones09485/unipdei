@@ -1,0 +1,287 @@
+<div  id="content">
+
+  <div class="row">
+    <app-cabecera></app-cabecera>
+</div>
+
+<body class="body" *ngIf="validcarreras">
+  <h2 class="text-center text-light m-2">
+    <span tooltip="Ir al inicio" placement="top" [hide-delay]="0" class="m-1">
+      <button type="button" class="btn btn-warning m-1"  [routerLink]="['/Homerprof/']"><i
+        class="fa-solid fa-circle-arrow-left color-morado"></i></button>
+    </span>Carreras</h2>
+
+
+  <div class="py-5">
+    <div class="container">
+      <div class="row hidden-md-up">
+        <div class="col-md-4" *ngFor="let car of carreras">
+          <div class="card m-3" style="width: 18rem;">
+            <div class="bg-secondary">
+              <img [src]="pathImg + car.foto1" class="card-img-top pr_pro" alt="...">
+            </div>
+
+            <hr size="2px" color="black" />
+            <div class="card-body">
+              <h4 class="card-title text-warning">{{car.nombre}}</h4>
+              <h5 class="card-title text-warning">{{car.pro_nombres}} {{car.pro_apellidos}}</h5>
+              <p class="card-title">{{car.descripcion}}</p>
+            </div>
+
+            <div class="card-footer" *ngIf="this.perfil == 2">
+              <span tooltip="Alumnos" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-warning m-1" (click)="alumnos(car.id)"><i class="fa-solid fa-user-group"></i>
+                </button>
+              </span>
+
+              <span tooltip="Examenes" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-warning m-1" (click)="examenes(car.id)"><i class="fa-solid fa-file-circle-plus"></i>
+                </button>
+              </span>
+
+              <span tooltip="Documentacion del programa" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-warning m-1" (click)="trabajos(1,car.id,1,this.user.usu_id)"><i class="fa-solid fa-briefcase"></i>
+                </button>
+              </span>
+
+
+              <span tooltip="Trabajos" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-warning m-1" (click)="trabajos(2,car.id,1,this.user.usu_id)"><i class="fa-solid fa-book"></i>
+                </button>
+              </span>
+
+
+
+              <span tooltip="Videos" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-warning m-1" (click)="videos(car.id)"><i class="fa-solid fa-video"></i>
+                </button>
+              </span>
+
+              <span tooltip="Clases en vivo" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-warning m-1" (click)="Clases(car.id)"><i class="fa-sharp fa-solid fa-headset"></i>
+                </button>
+              </span>
+
+            </div>
+
+            <div class="card-footer" *ngIf="this.perfil == 3">
+
+
+              <span tooltip="Examenes" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-warning m-1" (click)="alumexamenes(car.id,car.pro_id)"><i class="fa-solid fa-file-circle-plus"></i>
+                </button>
+              </span>
+
+              <span tooltip="Documentacion del programa" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-warning m-1" (click)="trabajos(1,car.id,2,car.pro_id)"><i class="fa-solid fa-briefcase"></i>
+                </button>
+              </span>
+
+              <span tooltip="Trabajos" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-warning m-1" (click)="trabajos(2,car.id,2,car.pro_id)"><i class="fa-solid fa-book"></i>
+                </button>
+              </span>
+
+
+              <span tooltip="Videos" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-warning m-1" (click)="videosAlum(car.id,car.pro_id)"><i class="fa-solid fa-video"></i>
+                </button>
+              </span>
+
+
+              <span tooltip="Clases en vivo" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-warning m-1" (click)="clasesAlum(car.id,car.pro_id)"><i class="fa-sharp fa-solid fa-headset"></i>
+                </button>
+              </span>
+
+            </div>
+          </div>
+        </div>
+      </div><br>
+    </div>
+  </div>
+</body>
+
+
+
+
+<body class="body" *ngIf="validcursos">
+  <h2 class="text-center text-light m-2">
+    <span tooltip="Ir al inicio" placement="top" [hide-delay]="0" class="m-1">
+      <button type="button" class="btn btn-warning m-1"  [routerLink]="['/Homerprof/']"><i
+        class="fa-solid fa-circle-arrow-left color-morado"></i></button>
+    </span>Cursos</h2>
+
+
+  <div class="py-5">
+    <div class="container">
+      <div class="row hidden-md-up">
+        <div class="col-md-4" *ngFor="let car of cursos">
+          <div class="card m-3" style="width: 18rem;">
+            <div class="bg-secondary">
+              <img [src]="pathImg + car.foto1" class="card-img-top pr_pro" alt="...">
+            </div>
+
+            <hr size="2px" color="black" />
+            <div class="card-body">
+              <h5 class="card-title text-info">{{car.nombre}}</h5>
+              <p class="card-title">{{car.descripcion}}</p>
+            </div>
+
+            <div class="card-footer" *ngIf="this.perfil == 2">
+              <span tooltip="Alumnos" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="alumnos(car.id)"><i class="fa-solid fa-user-group"></i>
+                </button>
+              </span>
+
+              <span tooltip="Examenes" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="examenes(car.id)"><i class="fa-solid fa-file-circle-plus"></i>
+                </button>
+              </span>
+
+              <span tooltip="Documentacion del programa" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="trabajos(1,car.id,1,this.user.usu_id)"><i class="fa-solid fa-briefcase"></i>
+                </button>
+              </span>
+
+              <span tooltip="Trabajos" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="trabajos(2,car.id,1,this.user.usu_id)"><i class="fa-solid fa-book"></i>
+                </button>
+              </span>
+
+              <span tooltip="Videos" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="videos(car.id)"><i class="fa-solid fa-video"></i>
+                </button>
+              </span>
+
+
+              <span tooltip="Clases en vivo" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="Clases(car.id)"><i class="fa-sharp fa-solid fa-headset"></i>
+                </button>
+              </span>
+
+
+            </div>
+
+            <div class="card-footer" *ngIf="this.perfil == 3">
+
+
+              <span tooltip="Examenes" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="alumexamenes(car.id,car.pro_id)"><i class="fa-solid fa-file-circle-plus"></i>
+                </button>
+              </span>
+
+              <span tooltip="Documentacion del programa" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="trabajos(1,car.id,2,car.pro_id)"><i class="fa-solid fa-briefcase"></i>
+                </button>
+              </span>
+
+              <span tooltip="Trabajos" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="trabajos(2,car.id,2,car.pro_id)"><i class="fa-solid fa-book"></i>
+                </button>
+              </span>
+
+              <span tooltip="Videos" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-warning m-1" (click)="videosAlum(car.id,car.pro_id)"><i class="fa-solid fa-video"></i>
+                </button>
+              </span>
+
+
+              <span tooltip="Clases en vivo" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-warning m-1" (click)="Clases(car.id)"><i class="fa-sharp fa-solid fa-headset"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div><br>
+    </div>
+  </div>
+</body>
+
+
+
+
+
+
+<body class="body" *ngIf="validdiplomados">
+  <h2 class="text-center text-light m-2">
+    <span tooltip="Ir al inicio" placement="top" [hide-delay]="0" class="m-1">
+      <button type="button" class="btn btn-warning m-1"  [routerLink]="['/Homerprof/']"><i
+        class="fa-solid fa-circle-arrow-left color-morado"></i></button>
+    </span>Diplomados</h2>
+
+
+  <div class="py-5">
+    <div class="container">
+      <div class="row hidden-md-up">
+        <div class="col-md-4" *ngFor="let car of diplomados">
+          <div class="card m-3" style="width: 18rem;">
+            <div class="bg-secondary">
+              <img [src]="pathImg + car.foto1" class="card-img-top pr_pro" alt="...">
+            </div>
+
+            <hr size="2px" color="black" />
+            <div class="card-body">
+              <h5 class="card-title text-info">{{car.nombre}}</h5>
+              <p class="card-title">{{car.descripcion}}</p>
+            </div>
+
+            <div class="card-footer" *ngIf="this.perfil == 2">
+              <span tooltip="Alumnos" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="alumnos(car.id)"><i class="fa-solid fa-user-group"></i>
+                </button>
+              </span>
+
+              <span tooltip="Examenes" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="examenes(car.id)"><i class="fa-solid fa-file-circle-plus"></i>
+                </button>
+              </span>
+
+              <span tooltip="Documentacion del programa" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="trabajos(1,car.id,1,this.user.usu_id)"><i class="fa-solid fa-briefcase"></i>
+                </button>
+              </span>
+
+              <span tooltip="Trabajos" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="trabajos(2,car.id,1,this.user.usu_id)"><i class="fa-solid fa-book"></i>
+                </button>
+              </span>
+            </div>
+
+            <span tooltip="Clases en vivo" placement="top" [hide-delay]="0" class="m-1">
+              <button type="button" class="btn btn-info m-1" (click)="Clases(car.id)"><i class="fa-sharp fa-solid fa-headset"></i>
+              </button>
+            </span>
+
+            <div class="card-footer" *ngIf="this.perfil == 3">
+
+
+              <span tooltip="Examenes" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="alumexamenes(car.id,car.pro_id)"><i class="fa-solid fa-file-circle-plus"></i>
+                </button>
+              </span>
+
+              <span tooltip="Documentacion del programa" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="trabajos(1,car.id,2,car.pro_id)"><i class="fa-solid fa-briefcase"></i>
+                </button>
+              </span>
+
+              <span tooltip="Clases en vivo" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="Clases(car.id)"><i class="fa-sharp fa-solid fa-headset"></i>
+                </button>
+              </span>
+
+              <span tooltip="Trabajos" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-info m-1" (click)="trabajos(2,car.id,2,car.pro_id)"><i class="fa-solid fa-book"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div><br>
+    </div>
+  </div>
+</body>
+
+</div>

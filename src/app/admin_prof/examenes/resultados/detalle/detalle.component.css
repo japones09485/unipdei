@@ -1,0 +1,23 @@
+table td,
+th,
+thead {
+    border-color: #a8a8a8;
+    border-width: 1px;
+}
+
+table thead th {
+    border-color: #a8a8a8;
+    border-width: 1px;
+}
+
+
+    #content {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../../../../assets/img/fondo_profe.jpg');
+      overflow: scroll;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      position:fixed;
+      margin-top: 40px;
+    }
+

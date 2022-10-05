@@ -1,0 +1,79 @@
+body {
+  background-color: #8475b6 !important;
+}
+
+.contenedor_morado{
+  margin-top: 10% !important;
+  background-color: #8475b6 !important;
+  opacity: 0.9;
+  padding: 100px;
+}
+
+
+.contenedor_amarillo{
+  margin-top: 10% !important;
+  background-color: #fec400 !important;
+  opacity: 0.9;
+  padding: 100px;
+}
+
+.card {
+  border: none;
+  border-radius: 10px
+}
+
+.c-details span {
+  font-weight: 300;
+  font-size: 13px
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  background-color: #eee;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 39px
+}
+
+.badge span {
+  background-color: #fffbec;
+  width: 60px;
+  height: 25px;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  display: flex;
+  color: #fed85d;
+  justify-content: center;
+  align-items: center
+}
+
+.progress {
+  height: 10px;
+  border-radius: 10px
+}
+
+.progress div {
+  background-color: red
+}
+
+.text1 {
+  font-size: 14px;
+  font-weight: 600
+}
+
+.text2 {
+  color: #a5aec0
+}
+
+#content{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../../assets/img/fondo_profe.jpg');
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position:fixed;
+
+}

@@ -1,0 +1,185 @@
+<div class="container-fluid bg-light" id="content">
+  <div class="row">
+    <div class="col-3" *ngIf="this.tipo == 0">
+      <app-menulateral></app-menulateral>
+    </div>
+    <div [ngClass]="this.tipo == 0 ? 'col-9' : 'col-12'" style="margin-top: 90px;" >
+
+      <app-cabecera></app-cabecera>
+      <h1 class="text-center color-gold" *ngIf="this.tipo == 0"> <i class="fa-solid fa-chalkboard-user m-1"> </i> Alumnos </h1>
+
+      <h2 class="text-center text-light" *ngIf="this.tipo > 0">
+        <span tooltip="Ir a programas" placement="top" [hide-delay]="0" class="m-1">
+          <button type="button" class="btn btn-warning m-1"  [routerLink]="['/Programasprf/' +  + this.tipo + '/' + this.profesor + '/' + this.usuario.usu_perfil]"><i
+            class="fa-solid fa-circle-arrow-left color-morado"></i></button>
+        </span> Mis examenes</h2>
+
+
+      <table class="table bg-user">
+        <thead>
+          <tr>
+
+            <th scope="col" class="color-gold" *ngIf="this.tipo == 0">Acciones</th>
+            <th scope="col" class="color-gold">Identificación</th>
+            <th scope="col" class="color-gold">Nombres</th>
+            <th scope="col" class="color-gold">Email</th>
+            <th scope="col" class="color-gold">Teléfono</th>
+            <th scope="col" class="color-gold">Perfil</th>
+            <th scope="col" class="color-gold">Estado</th>
+            <th scope="col" class="color-gold">
+              <div class="container text-center mt-5">
+                <span *ngIf="this.tipo == 0" tooltip="Agregar alumno" placement="top" [hide-delay]="0" class="m-1">
+                  <button type="button" class="btn btn-warning" routerLink="/AdminAlumno/0"><i
+                      class="fa-solid fa-folder-plus color-morado"></i></button>
+                </span>
+
+                <div *ngIf="this.tipo != 0">
+                  <button type="button" class="btn bntn-lg btn-danger m-1 fa-solid fa-plus" data-toggle="modal" data-target="#inscribir">Inscribir alumno</button>
+                            <div class="modal fade" id="inscribir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel"><img src="../../../assets/img/logo.png" id="logo" alt=""> Incripción de alumno</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+
+                                        <div class="modal-body">
+                                            <form [formGroup]="frmAlumCreator" class="m-2" (ngSubmit)="Inscripcion()">
+                                                <div class="form-group row">
+                                                    <p class = "text-dark">Ingrese el correo electrónico del alumno a registrar. El correo electrónico del alumno debe corresponder al registrado en www.unipdei.com
+                                                    </p>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <input type="text" class="form-control" formControlName="correo" />
+                                                </div>
+                                                <div class="alert alert-primary m-1" role="alert" *ngIf="mostrarmsjresp">
+                                                  {{this.msjresp}}
+                                                </div>
+
+
+                                                <div class="form-group row">
+                                                    <button type="submit" *ngIf="frmAlumCreator.valid" class="btn btn-danger btn-block m-2">Inscribir</button>
+                                                </div>
+
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+
+                <span *ngIf="this.tipo == 0" tooltip="Cargue masivo" placement="top" [hide-delay]="0" class="m-1">
+                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#masivoalum"><i
+                      class="fa-solid fa-file-arrow-up color-morado"></i></button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="masivoalum" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content bg-dark">
+                        <div class="modal-header text-center">
+                          <h5 class="modal-title" id="exampleModalLabel">Cargue masivo de alumnos (.csv)</h5>
+                          <button type="button" class="close bg-warning" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+
+                          <form method="post" [formGroup]="frmCr" (ngSubmit)="cargarAlumnos(this.usuario.usu_id)">
+
+                            <div class="form-group row mt-3">
+                              <div class="custom-file col-sm-10">
+                                <input accept=".csv" type="file" formControlName="nombre"
+                                  class="custom-file-input form-control" (change)="agregarArchivo($event,1)"
+                                  name="ft_1" />
+                              </div>
+                            </div>
+
+                            <div class="form-group row m-3" style=" text-align:center; margin-top: 50px !important;">
+
+                              <div class="custom-file col-sm-12">
+                                <button style="max-width: 105% !important;" type="submit"
+                                  class="btn btn-primary btn-lg btn-block bg-gold color-morado img-fluid"> <i
+                                    class="fa-solid fa-floppy-disk"></i> Guardar</button>
+
+                              </div>
+
+
+
+                            </div>
+
+                          </form>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </span>
+
+                <span *ngIf="this.tipo == 0" tooltip="Documento de ejemplo" placement="top" [hide-delay]="0" class="m-1">
+                  <a type="button" class="btn btn-light" href="../../../assets/documentos/uploadAlumno.csv"
+                    download="data_alumno.csv">
+                    <i class="fa-solid fa-file-circle-plus color-morado"></i>
+                  </a>
+
+                </span>
+              </div>
+            </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let alum of Alumnos">
+            <td class="text-table" *ngIf="this.tipo == 0">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-warning" routerLink="/AdminAlumno/{{alum.alum_id}}"><i
+                    class="fa-solid fa-pen-to-square color-morado"></i></button>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-danger color-morado" data-toggle="modal"
+                  [attr.data-target]="'#staticBackdrop'+alum.alum_id">
+                  <i class="fa-solid fa-trash color-morado"></i>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop{{alum.alum_id}}" data-backdrop="static" tabindex="-1"
+                  role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content bg-color color-gold">
+                      <div class="modal-header text-center">
+                        <h3 class="modal-title" id="staticBackdropLabel">Mensaje de confirmación</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        ¿Esta seguro de eliminar alumno {{alum.alum_nombres}} {{alum.alum_apellidos}}?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn bg-gold color-morado" data-dismiss="modal"
+                          (click)="eliminaralumno(alum.alum_id)"><i class="fa-solid fa-check-double"></i>
+                          Confirmar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </td>
+            <td class="text-table">{{alum.alum_identificacion}}</td>
+            <td class="text-table"> {{alum.alum_nombres}} {{alum.alum_apellidos}}</td>
+            <td class="text-table">{{ alum.alum_email }}</td>
+            <td class="text-table">{{alum.alum_telefono}}</td>
+            <td class="text-table">PROFESOR</td>
+            <td class="text-table">{{estado(alum.alum_estado)}}</td>
+            <td class="text-table">{{alum.alum_textoclaro}}</td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+.logo_menu{
+    width:25%;
+    height:25%;
+}
+
+a{
+    font-family: 'Koulen';
+    color: white;
+    font-size: 22px;
+    
+}
+.menuh{
+    background-color:#494B76;
+}
+
+li{
+   margin-left: 40px;
+   margin-right: 40px;
+
+}
+.ingr{
+    background-color:#ca4f15;
+    border-radius: 45px;
+    width: 20%;
+}
+
+@media (max-width: 800px) {
+    .ingr{
+        margin-left: 30px;
+        background-color:#ca4f15;
+        border-radius: 45px;
+        width: 40%;
+    }
+
+    .opt{
+        color: rgb(29, 29, 29);
+        
+    }
+
+    
+  }

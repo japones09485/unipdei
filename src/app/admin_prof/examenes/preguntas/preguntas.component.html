@@ -1,0 +1,168 @@
+
+<div class="row justify-content-md-center" id="content">
+  <div class="col-md-9 col-sm-9 col-xs-9">
+
+    <div class="row">
+      <app-cabecera></app-cabecera>
+  </div>
+
+    <div class="new">
+      <ng-container id="content">
+        <h2 class="text-center text-light m-2">
+          <span tooltip="Ir a examenes" placement="top" [hide-delay]="0" class="m-1">
+            <button type="button" class="btn btn-warning m-1"  [routerLink]="['/Examenes/' + this.tipo_prog + '/' + this.programa+ '/' + this.profesor]"><i
+              class="fa-solid fa-circle-arrow-left color-morado"></i></button>
+          </span> Preguntas</h2>
+
+
+        <div>
+          <!-- Button trigger modal -->
+<button type="button" class="btn btn-warning btn-sm m-3" data-toggle="modal" data-target="#addpreg">
+Nueva pregunta
+</button>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="addpreg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content bg-dark">
+    <div class="modal-header">
+      <h5 class="modal-title text-danger" id="exampleModalLabel">Nueva pregunta</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="alert alert-warning" role="alert"*ngIf="!validalm">
+      {{this.mensaje}}
+    </div>
+
+    <div class="modal-body">
+      <form (ngSubmit)="addPregunta(g)" #g="ngForm" id="add_prg">
+
+
+        <div>
+          <div class="form-group row">
+
+            <div class="col-sm-7">
+              <textarea name="pregunta" placeholder="Pregunta" class="form-control" cols="30"
+                rows="3" required ngModel></textarea>
+            </div>
+
+            <div class="col-sm-3">
+              <select name="respuesta" class="form-control m-3" required ngModel>
+                <option [value]="1">Opción multiple</option>
+                <option [value]="2">Verdadero o falso</option>
+                <option [value]="3">Abierta</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+        <button type="submit" class="btn btn-danger btn-sm m-2" *ngIf="!this.crrmd">Guardar</button>
+        <button type="button" class="btn btn-warning btn-sm m-2" *ngIf="this.crrmd" (click)="crrmod()" data-dismiss="modal">Cerrar</button>
+
+      </form>
+    </div>
+
+  </div>
+</div>
+</div>
+        </div>
+
+
+        <form (ngSubmit)="GuardarPreguntas(f)" #f="ngForm" id="form-preg">
+
+
+          <div *ngIf="!preguntas">
+            <div class="form-group row" *ngFor="let preg of arrnumpreg">
+
+              <div class="col-sm-6">
+                <textarea name="pregunta_{{preg}}" placeholder="Pregunta #{{preg}}" class="form-control m-1" cols="30"
+                  rows="3" required ngModel></textarea>
+              </div>
+
+              <div class="col-sm-3">
+                <select name="respuesta_{{preg}}" class="form-control m-3" required ngModel>
+                  <option [value]="1">Opción multiple</option>
+                  <option [value]="2">Verdadero o falso</option>
+                  <option [value]="3">Abierta</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+          <div *ngIf="preguntas">
+            <div class="form-group row m-2" *ngFor="let preg of preguntas">
+
+              <div class="col-sm-6">
+                <textarea name="pregunta_{{preg.numero_pregunta}}" placeholder="Pregunta #{{preg.numero_pregunta}}"
+                  class="form-control m-1" cols="30" rows="3" [(ngModel)]="preg.enunciado"></textarea>
+              </div>
+
+              <div class="col-sm-3">
+                <select name="respuesta_{{preg.numero_pregunta}}" class="form-control m-3" ngModel
+                  [(ngModel)]="preg.tipo_pregunta" disabled="true">
+                  <option [value]="1">Opción multiple</option>
+                  <option [value]="2">Verdadero o falso</option>
+                  <option [value]="3">Abierta</option>
+                </select>
+              </div>
+
+
+
+              <div class="col-sm-3">
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-danger btn-sm m-3"  data-toggle="modal"  [attr.data-target]="'#conf_delte'+preg.id_pregunta">
+ Eliminar pregunta
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade"  id="conf_delte{{preg.id_pregunta}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title text-white" id="exampleModalLabel">Mensaje de usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="text-white">
+          Esta seguro de eliminar esta pregunta?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="eliminar_preg(preg.id_pregunta,preg.fk_examen)" data-dismiss="modal">Estoy seguro!</button>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+              </div>
+
+            </div>
+
+            <div class="col-sm-12" *ngIf="validul">
+              <div class="alert alert-warning" role="alert">
+              {{this.mensaje}}
+              </div>
+
+            </div>
+          </div>
+
+
+
+
+          <div class="alert alert-warning" *ngIf="sucess" role="alert">
+            <p class="text-dark text-center"> {{ mensaje }} </p>
+          </div>
+
+          <button type="submit" class="btn btn-danger btn-block">Guardar</button>
+        </form>
+      </ng-container>
+    </div>
+  </div>
+</div>

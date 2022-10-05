@@ -1,0 +1,53 @@
+<div class="row">
+  <app-cabecera></app-cabecera>
+</div>
+
+<div class="row justify-content-md-center" id="content">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <ng-container id="content">
+
+      <h2 class="text-center text-light m-2">
+        <span tooltip="Ir a examenes" placement="top" [hide-delay]="0" class="m-1">
+          <button type="button" class="btn btn-warning m-1"  [routerLink]="['/Examenes/' + this.tipo_prog + '/' + this.programa+ '/' + this.profesor]"><i
+            class="fa-solid fa-circle-arrow-left color-morado"></i></button>
+        </span> Resultados</h2>
+
+      <table class="table table-sm table-bordered text-ligh">
+
+
+
+        <thead class="table-dark">
+          <tr class="text-center">
+            <th>Nombre del alumno</th>
+            <th>Inicio inicio presentación</th>
+            <th>Fin presentación</th>
+            <th>Fecha limite presentación</th>
+            <th>Calificación cualitativa</th>
+            <th>Calificación cuantitativa</th>
+            <th>Resultados</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr class="text-center text-white" *ngFor="let res of this.resultados">
+            <td>{{ res.alumno }}</td>
+            <td>{{ res.fecha_inicio }}</td>
+            <td>{{ res.fecha_final }}</td>
+            <td>{{ res.fecha_plazo }}</td>
+            <td *ngIf="res.nota==1" class="text-info">Aprobo</td>
+            <td *ngIf="res.nota==0" class="text-danger">Reprobo</td>
+            <td>{{ res.cualitativo }}</td>
+            <td>
+              <button type="button" (click)="verResultado(res.presentacion)" class="btn btn-sm btn-danger ml-1">
+                <i class="fa-solid fa-list"></i> Detalle
+            </button>
+            </td>
+
+          </tr>
+
+
+        </tbody>
+      </table>
+    </ng-container>
+  </div>
+</div>

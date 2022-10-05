@@ -1,0 +1,84 @@
+
+
+
+  <div class="row">
+    <app-cabecera></app-cabecera>
+</div>
+<div class="row justify-content-md-center" id="content">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <ng-container id="content">
+      <h2 class="text-center text-light m-2">
+      <span tooltip="Ir a examenes" placement="top" [hide-delay]="0" class="m-1">
+        <button type="button" class="btn btn-warning m-1"  [routerLink]="['/Programasprf/' + this.tipo_prog + '/' + this.profesor + '/' + this.user.usu_perfil]"><i
+          class="fa-solid fa-circle-arrow-left color-morado"></i></button>
+      </span> Mis examenes</h2>
+
+      <table class="table table-sm table-bordered text-ligh">
+
+
+
+        <thead class="table-dark">
+          <tr class="text-center">
+            <th><button type="button" class="btn btn-danger btn-sm" (click)="nuevoExamen(0,this.tipo_prog,this.profesor,this.programa,0)">Nuevo
+                Examen</button></th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Fecha inicio</th>
+            <th>Fecha fin</th>
+            <th># preguntas</th>
+            <th>Tipo de examen</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr class="text-center text-white" *ngFor="let ex of examenes index as i;">
+            <td>
+              <button type="button" class="btn btn-danger btn-sm m-1
+                        " (click)="eliminarExamen(ex.id_examen)">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+              <button type="button" class="btn btn-success btn-sm" (click)="nuevoExamen(ex.id_examen,this.tipo_prog,this.profesor,this.programa,1)"> <i
+                  class="far fa-edit"></i></button>
+
+              <button type="button" *ngIf="ex.status_edit==0" class="btn btn-danger btn-sm m-1"
+                (click)="PreguntasExamen(ex.id_examen,this.tipo_prog,this.programa,this.profesor)"><i class="fa fa-plus"></i>Configurar
+                Preguntas</button>
+              <button type="button" *ngIf="ex.status_edit==1" class="btn btn-success btn-sm m-1"
+                (click)="PreguntasExamen(ex.id_examen,this.tipo_prog,this.programa,this.profesor)"><i class="fa fa-plus"></i>Preguntas</button>
+              <button type="button" *ngIf="ex.status_edit==1" class="btn btn-info btn-sm m-1"
+                (click)="RespuestasExamen(ex.id_examen,this.tipo_prog,this.programa,this.profesor)"><i class="fa fa-plus"></i>
+                Respuestas</button>
+                <button type="button"  class="btn btn-danger btn-sm m-1"
+                (click)="ResultadosExamen(ex.id_examen)"><i class="fa fa-plus"></i>
+                Resultados examen</button>
+
+            </td>
+
+            <td>{{ ex.nombre }}</td>
+            <td>{{ ex.descripcion }}</td>
+            <td>{{ ex.fecha_inicio }}</td>
+            <td>{{ ex.fecha_fin }}</td>
+            <td>{{ ex.numero_preguntas }}</td>
+
+            <td *ngIf="ex.estado == 1 " class="text-success">
+              <button *ngIf="ex.estado == 1" (click)="estadoExamen(ex.id_examen,0,this.tipo_prog,this.programa,this.profesor)" type="button" class="btn btn-danger" data-dismiss="modal" data-backdrop="false">Inactivar</button>
+           </td>
+           <td *ngIf="ex.estado == 0 " class="text-danger">
+             <button *ngIf="ex.estado == 0" (click)="estadoExamen(ex.id_examen,1,this.tipo_prog,this.programa,this.profesor)" type="button" class="btn btn-info btn-sm m-1" data-dismiss="modal" data-backdrop="false">Activar</button>
+           </td>
+           <td *ngIf="ex.tipo_examen == 1 " class="text-info">
+             Examen regular
+           </td>
+           <td *ngIf="ex.tipo_examen == 2 " class="text-danger">
+             <button (click)="alumExamenRecupera(ex.id_examen)" type="button" class="btn btn-info btn-sm m-1" data-dismiss="modal" data-backdrop="false">Alumnos examen de recuperación</button>
+
+           </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </ng-container>
+  </div>
+</div>

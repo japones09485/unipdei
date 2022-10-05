@@ -1,0 +1,31 @@
+<div  id="content">
+
+  <div class="row">
+    <app-cabecera></app-cabecera>
+</div>
+<div>
+    <h1 class="card-header text-center text-white" style="padding-top:140px;"><a (click)="pag_principal(1,this.user.usu_id,this.user.usu_perfil)"><i class="fas fa-arrow-alt-circle-left float-left text-light"></i></a>Videos</h1>
+    <div class="row row-cols-1 row-cols-md-3 m-5">
+        <div class="col mb-4" *ngFor="let vid of videos">
+            <div class="card border-danger content" id="card-vid">
+              <h3 class="card-title text-white text-center m-2">{{vid.vid_titulo}}</h3>
+                <div class="card-body">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe allowfullscreen="true" [src]="getURL(vid.vid_ruta)" automute="true" max-width="640" max-height="480"></iframe>
+                    </div>
+                </div>
+                <div class="card-footer">
+
+                    <p class="text-white">{{vid.vid_descripcion}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="bienvenida" style="padding-top:100px;">
+
+  <iframe  [src]="getURL(this.usuario.usu_id)" width="640" height="480" allow="autoplay"></iframe>
+</div>
+
+</div>

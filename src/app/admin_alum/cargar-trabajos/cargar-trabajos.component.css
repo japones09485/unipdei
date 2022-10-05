@@ -1,0 +1,45 @@
+@media only screen and (min-width: 700px) {
+  .new {
+      float: none;
+      margin-left: 20%;
+      margin-right: 20%;
+      margin-top: 15px;
+      margin-bottom: auto;
+      padding: 6px;
+  }
+  #content {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../../assets/img/fondo_profe.jpg');
+    overflow: scroll;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      position:fixed;
+      margin-top: 40px
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  #content {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../../assets/img/fondo_profe.jpg');
+    overflow: scroll;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position:fixed;
+  }
+}
+
+.imga1 {
+  background: black;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.logo_menu {
+  height: 60px;
+  width: 100px;
+}
+
