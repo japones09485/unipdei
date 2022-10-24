@@ -1,0 +1,41 @@
+<div class="container-fluid bg-light" id="content" >
+  <div class="row">
+    <div class="col-3">
+      <app-menulateral></app-menulateral>
+    </div>
+    <div class="col-9" style="margin-top: 90px;">
+      <app-cabecera></app-cabecera>
+      <h1 class="text-center color-gold"> <i class="fa-solid fa-building-columns m-1"></i> Relacion programas Alumno</h1>
+      <table class="table bg-color">
+        <thead>
+          <tr>
+
+            <th scope="col" class="color-gold">Programa</th>
+            <th scope="col" class="color-gold">Descripción</th>
+            <th scope="col" class="color-gold">Profesor</th>
+            <th scope="col" class="color-gold">Fecha Inscripción</th>
+            <th scope="col" class="color-gold">Estado</th>
+            <th>
+              <span  tooltip="Agregar a programa" placement="top" [hide-delay]="0" class="m-1">
+                <button type="button" class="btn btn-danger color-morado m-1" routerLink="/IncripAlumProg/{{this.id_alum}}">
+                  <i class="fa-solid fa-plus color-morado"></i>
+                </button>
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let car of carreras">
+               <td>{{car.nombre}}</td>
+               <td>{{car.descripcion}}</td>
+               <td>{{car.pro_nombres}} {{car.pro_apellidos}}</td>
+               <td>{{car.pro_nombres}} {{car.pro_apellidos}}</td>
+               <td>{{car.fecha_inscrip}}</td>
+               <td *ngIf="car.estadorel == 0"><button type="button" class="btn btn-info" (click)="cambiarestado(car.id_rel,0)">Activar</button></td>
+               <td *ngIf="car.estadorel == 1"><button type="button" class="btn btn-danger" (click)="cambiarestado(car.id_rel,1)">Desactivar</button></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

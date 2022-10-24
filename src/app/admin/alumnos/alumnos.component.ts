@@ -34,6 +34,7 @@ export class AlumnosComponent implements OnInit {
   frmAlumCreator !: FormGroup;
   msjresp !: string;
   mostrarmsjresp = false;
+  seleccionado !: string;
 
 
   constructor(private auth:AuthService,
@@ -168,7 +169,7 @@ export class AlumnosComponent implements OnInit {
     });
   }
 
-  Inscripcion(){
+  Inscripcion(alumno:number){
 
     const payload = {
       tipo: this.tipo,
@@ -176,6 +177,7 @@ export class AlumnosComponent implements OnInit {
       profesor : this.profesor,
       programa : this.programa
     };
+
 
     this.profs.Inscri_Alumno_prog(payload)
     .subscribe((res:any)=>{
@@ -189,6 +191,10 @@ export class AlumnosComponent implements OnInit {
 
 
 
+}
+
+listarprogramas(tipoProg:string){
+ alert(tipoProg);
 }
 
 }

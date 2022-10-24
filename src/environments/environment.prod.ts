@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  apiURL: 'https://cityfitnessworld.com/fitnes/',
-  pathImgs: 'https://cityfitnessworld.com/fitnes/',
-  pathVideos: 'https://cityfitnessworld.com/fitnes/',
-  
+  apiURL: 'https://unipdeiandina.com/unipdeidata/',
+  pathImgs: 'https://unipdeiandina.com/unipdeidata/',
+  pathVideos: 'https://unipdeiandina.com/unipdeidata/',
+
 };

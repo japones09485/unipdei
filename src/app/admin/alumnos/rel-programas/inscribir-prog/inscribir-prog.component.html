@@ -1,0 +1,55 @@
+<div class="container-fluid bg-light">
+  <div class="row">
+      <div class="col-3">
+          <app-menulateral></app-menulateral>
+      </div>
+      <div class="col-9" style="margin-top: 130px;">
+        <app-cabecera></app-cabecera>
+        <div class="login-dark">
+            <form method="post" [formGroup]="frmCr" (ngSubmit)="inscribir_alum(this.id)">
+              <h1 class="text-center color-gold"> Inscripción a programa </h1>
+              <div class="form-group row mt-3">
+                <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Tipo Programa</label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="tipo_programa"  [(ngModel)]="opcionSeleccionado" (change)="listar_programas(opcionSeleccionado)">
+
+                      <option [ngValue]="1">Carreras</option>
+                      <option [ngValue]="2">Cursos</option>
+                      <option [ngValue]="3">Diplomados</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row mt-3">
+              <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Programa</label>
+              <div class="col-sm-10">
+                  <select class="form-control" formControlName="programa" [(ngModel)]="ProgSeleccionado" (change)="listar_profesores(opcionSeleccionado,ProgSeleccionado)">
+
+                    <option  [value]="item.id" *ngFor="let item of programaf">{{item.nombre}}</option>
+                  </select>
+
+              </div>
+          </div>
+
+          <div class="form-group row mt-3">
+            <label for="exampleInputEmail1" class="form-label col-sm-2 color-gold">Profesor</label>
+            <div class="col-sm-10">
+                <select class="form-control" formControlName="profesor" >
+                  <option  [value]="pro.id" *ngFor="let pro of profesores">{{pro.nombre}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row mt-3">
+          <button type="submit" class="btn btn-primary btn-lg btn-block bg-gold color-morado img-fluid" *ngIf="frmCr.valid"> <i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+
+      </div>
+
+
+
+            </form>
+        </div>
+      </div>
+  </div>
+</div>
+

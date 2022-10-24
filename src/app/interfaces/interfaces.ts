@@ -28,6 +28,8 @@ export interface Carreras {
   foto1:number;
   foto2:number;
   foto3:number;
+  link_argentina:string;
+  link_pago:string;
 }
 
 

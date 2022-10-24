@@ -23,12 +23,20 @@ export class ProfesoresService {
     return this.http.post(this.urlAPI + `alumnos/getCarrerasAlum`, {tipo,alumno});
   }
 
+  getprogramasAlumnos(id:number ){
+    return this.http.post(this.urlAPI + `alumnos/getprogramasAlumno`, {id});
+  }
+
   getAlum_carrera(tipo:number,profesor:number,id_prog:number){
     return this.http.post(this.urlAPI + `Alumnos/Alum_carrera`, {tipo,profesor,id_prog});
   }
 
   Inscri_Alumno_prog(payload:any){
     return this.http.post(this.urlAPI + `Alumnos/Inscri_Alumno_prog`, payload);
+  }
+
+  cambiarestado_rel(id_rel:number,estado:number,alumno:number){
+    return this.http.post(this.urlAPI + `Alumnos/cambiarestado_rel`, {id_rel,estado,alumno});
   }
 
   listarExamenes(tipo:number , profesor: number, programa:number){

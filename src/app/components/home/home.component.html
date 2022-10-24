@@ -144,64 +144,22 @@
 
       <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
 
-        <div class="col-lg-6 menu-item filter-starters">
-          <img src="assets/img/curso.png" class="menu-img" alt="">
+        <div class="col-lg-8 menu-item filter-starters" *ngFor="let car of carreras">
+          <img  src="{{pathImg + car.foto1}}" class="menu-img" alt="">
           <div class="menu-content">
-            <a href="#">Psicología del deporte</a>
+            <a href="#">{{car.nombre}}</a>
           </div>
           <div class="menu-ingredients">
-            El foco puede estar sobre el comportamiento o sobre dimensiones psicológicas de la conducta humana, es decir sobre lo afectivo, cognitivo, motivacional o dimensiones sensorio motoras
-          </div>
-        </div>
-
-        <div class="col-lg-6 menu-item filter-starters">
-          <img src="assets/img/curso.png" class="menu-img" alt="">
-          <div class="menu-content">
-            <a href="#">Psicología del deporte</a>
-          </div>
-          <div class="menu-ingredients">
-            El foco puede estar sobre el comportamiento o sobre dimensiones psicológicas de la conducta humana, es decir sobre lo afectivo, cognitivo, motivacional o dimensiones sensorio motoras
-          </div>
-        </div>
-        <div class="col-lg-6 menu-item filter-starters">
-          <img src="assets/img/curso.png" class="menu-img" alt="">
-          <div class="menu-content">
-            <a href="#">Psicología del deporte</a>
-          </div>
-          <div class="menu-ingredients">
-            El foco puede estar sobre el comportamiento o sobre dimensiones psicológicas de la conducta humana, es decir sobre lo afectivo, cognitivo, motivacional o dimensiones sensorio motoras
-          </div>
-        </div>
-        <div class="col-lg-6 menu-item filter-starters">
-          <img src="assets/img/curso.png" class="menu-img" alt="">
-          <div class="menu-content">
-            <a href="#">Psicología del deporte</a>
-          </div>
-          <div class="menu-ingredients">
-            El foco puede estar sobre el comportamiento o sobre dimensiones psicológicas de la conducta humana, es decir sobre lo afectivo, cognitivo, motivacional o dimensiones sensorio motoras
-          </div>
-        </div>
-        <div class="col-lg-6 menu-item filter-starters">
-          <img src="assets/img/curso.png" class="menu-img" alt="">
-          <div class="menu-content">
-            <a href="#">Psicología del deporte</a>
-          </div>
-          <div class="menu-ingredients">
-            El foco puede estar sobre el comportamiento o sobre dimensiones psicológicas de la conducta humana, es decir sobre lo afectivo, cognitivo, motivacional o dimensiones sensorio motoras
-          </div>
-        </div>
-        <div class="col-lg-6 menu-item filter-starters">
-          <img src="assets/img/curso.png" class="menu-img" alt="">
-          <div class="menu-content">
-            <a href="#">Psicología del deporte</a>
-          </div>
-          <div class="menu-ingredients">
-            El foco puede estar sobre el comportamiento o sobre dimensiones psicológicas de la conducta humana, es decir sobre lo afectivo, cognitivo, motivacional o dimensiones sensorio motoras
+            {{car.descripcion}}
           </div>
         </div>
 
 
 
+      </div>
+
+      <div class="row">
+        <button type="button" class="btn bg-color btn-lg btn-block col-lg-8 m-3"  routerLink="/AllProgramas">Ver todos nuestros programas</button>
       </div>
     </div>
   </section><!-- End Menu Section -->
@@ -264,7 +222,7 @@
       <div class="row g-0">
 
         <div class="col-lg-3 col-md-4">
-          <div class="gallery-item">
+          <div class="gallery-item m-1">
             <a href="assets/img/galeria1.jpg" class="gallery-lightbox" data-gall="gallery-item">
               <img src="assets/img/galeria1.jpg" alt="" class="img-fluid">
             </a>
@@ -272,7 +230,7 @@
         </div>
 
         <div class="col-lg-3 col-md-4">
-          <div class="gallery-item">
+          <div class="gallery-item m-1">
             <a href="assets/img/galeria1.jpg" class="gallery-lightbox" data-gall="gallery-item">
               <img src="assets/img/galeria1.jpg" alt="" class="img-fluid">
             </a>
@@ -280,7 +238,7 @@
         </div>
 
         <div class="col-lg-3 col-md-4">
-          <div class="gallery-item">
+          <div class="gallery-item m-1">
             <a href="assets/img/galeria1.jpg" class="gallery-lightbox" data-gall="gallery-item">
               <img src="assets/img/galeria1.jpg" alt="" class="img-fluid">
             </a>
@@ -288,7 +246,7 @@
         </div>
 
         <div class="col-lg-3 col-md-4">
-          <div class="gallery-item">
+          <div class="gallery-item m-1">
             <a href="assets/img/galeria1.jpg" class="gallery-lightbox" data-gall="gallery-item">
               <img src="assets/img/galeria1.jpg" alt="" class="img-fluid">
             </a>
@@ -296,7 +254,7 @@
         </div>
 
         <div class="col-lg-3 col-md-4">
-          <div class="gallery-item">
+          <div class="gallery-item m-1">
             <a href="assets/img/galeria1.jpg" class="gallery-lightbox" data-gall="gallery-item">
               <img src="assets/img/galeria1.jpg" alt="" class="img-fluid">
             </a>
@@ -304,7 +262,7 @@
         </div>
 
         <div class="col-lg-3 col-md-4">
-          <div class="gallery-item">
+          <div class="gallery-item m-1">
             <a href="assets/img/galeria1.jpg" class="gallery-lightbox" data-gall="gallery-item">
               <img src="assets/img/galeria1.jpg" alt="" class="img-fluid">
             </a>
@@ -312,7 +270,7 @@
         </div>
 
         <div class="col-lg-3 col-md-4">
-          <div class="gallery-item">
+          <div class="gallery-item m-1">
             <a href="assets/img/galeria1.jpg" class="gallery-lightbox" data-gall="gallery-item">
               <img src="assets/img/galeria1.jpg" alt="" class="img-fluid">
             </a>
@@ -320,7 +278,7 @@
         </div>
 
         <div class="col-lg-3 col-md-4">
-          <div class="gallery-item">
+          <div class="gallery-item m-1">
             <a href="assets/img/galeria1.jpg" class="gallery-lightbox" data-gall="gallery-item">
               <img src="assets/img/galeria1.jpg" alt="" class="img-fluid">
             </a>

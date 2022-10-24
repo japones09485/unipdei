@@ -1,0 +1,58 @@
+<!-- ======= Top Bar ======= -->
+<div id="topbar" class="d-flex align-items-center fixed-top">
+  <div class="container d-flex justify-content-center justify-content-md-between">
+
+    <div class="contact-info d-flex align-items-center">
+      <i class="bi bi-phone d-flex align-items-center"><span><strong>(+54 9)-0381 4210745</strong></span>  <img src="../../../assets/img/argentina.ico" class="img-top"><strong>Lunes a viernes de: 9 hs. a 13 hs.  y  18 hs. a 21 hs.</strong></i>
+    </div>
+
+    <div class="languages d-none d-md-flex align-items-center">
+      <ul>
+        <li>Universidad Popular de Desarrollo e Innovación </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top d-flex align-items-cente">
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
+
+
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+    <nav id="navbar" class="navbar order-last order-lg-0">
+      <ul>
+        <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
+        <li><a class="nav-link scrollto" href="#objetivo">Objetivo</a></li>
+        <li><a class="nav-link scrollto" href="#equipo">Nuestro equipo</a></li>
+        <li><a class="nav-link scrollto" href="#programas">Programas</a></li>
+        <li><a class="nav-link scrollto" href="#mision">Misión</a></li>
+        <li><a class="nav-link scrollto" href="#galeria">Galeria</a></li>
+        <li><a class="nav-link scrollto" href="#contacto">Contacto</a></li>
+
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+    <a  [routerLink]="['/login']" class="book-a-table-btn scrollto d-none d-lg-flex">Ingreso</a>
+
+  </div>
+</header><!-- End Header -->
+
+
+<div class="row"style="margin-top: 130px; margin-left: 10%; margin-right: 10%;">
+  <!-- the cols in this div change the number of cards per row depending on screen size and the mb-4 adds space below cards if they spill over into the next row-->
+  <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let car of carreras">
+    <div class="card" >
+      <h3 class="card-header text-center text-warning">{{car.nombre}}</h3>
+
+      <img class="card-img-top" src="{{pathImg + car.foto1}}" alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text">{{car.descripcion}}</p>
+        <a target="_blank" href="{{car.link_argentina}}" class="btn btn-info m-2"><i class="fa-solid fa-sack-dollar" ></i> Link pago (Solo Argentina)</a>
+        <a  target="_blank" href="{{car.link_pago}}" class="btn bg-color m-2"> <i class="fa-solid fa-sack-dollar"></i> Link Pago</a>
+      </div>
+    </div>
+  </div>
+</div>

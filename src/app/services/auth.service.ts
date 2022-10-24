@@ -35,13 +35,12 @@ export class AuthService {
     });
   }
 
-
   isAuthenticated() {
     const token = sessionStorage.getItem('token');
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+        'X-API-KEY': `Bearer ${token}`
       })
     };
     return this.http.get(`${this.urlAPI}auth/verifyToken`, httpOptions);
@@ -76,6 +75,16 @@ export class AuthService {
   logOut() {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('user');
+  }
+
+
+
+  getallProgramas(){
+    return this.http.get(this.urlAPI + `Carreras/getallProgramas`);
+  }
+
+  listFrontProgramas(){
+    return this.http.get(this.urlAPI + `Carreras/getFront`);
   }
 
   listCarreras(){

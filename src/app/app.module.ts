@@ -54,6 +54,12 @@ import { ClasesComponent } from './admin_prof/clases/clases.component';
 import { ClaseComponent } from './admin_prof/clases/clase/clase.component';
 import { ClasesAlumnoComponent } from './admin_alum/clases-alumno/clases-alumno.component';
 import { ConferenciaComponent } from './admin_alum/conferencia/conferencia.component';
+import { RelProgrammasComponent } from './admin/alumnos/rel-programas/rel-programas.component';
+import { InscribirProgComponent } from './admin/alumnos/rel-programas/inscribir-prog/inscribir-prog.component';
+import { AllprogramasComponent } from './components/allprogramas/allprogramas.component';
+
+
+
 
 
 
@@ -106,7 +112,10 @@ import { ConferenciaComponent } from './admin_alum/conferencia/conferencia.compo
     ClasesComponent,
     ClaseComponent,
     ClasesAlumnoComponent,
-    ConferenciaComponent
+    ConferenciaComponent,
+    RelProgrammasComponent,
+    InscribirProgComponent,
+    AllprogramasComponent
   ],
   imports: [
     BrowserModule,

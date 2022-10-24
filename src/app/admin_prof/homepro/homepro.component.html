@@ -17,7 +17,8 @@
 
                 </div>
                 <div class="mt-5">
-                    <h4 class="heading text-dark">Carreras a cargo</h4>
+                    <h4 class="heading text-dark"  *ngIf="this.user.usu_perfil == 2">Carreras a cargo</h4>
+                    <h4 class="heading text-dark"  *ngIf="this.user.usu_perfil == 3">Carreras Inscritas</h4>
                     <div class="mt-5">
                         <div class="progress">
                             <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -44,12 +45,13 @@
 
                 </div>
                 <div class="mt-5">
-                    <h3 class="heading text-dark">Cursos a cargo</h3>
+                  <h4 class="heading text-dark"  *ngIf="this.user.usu_perfil == 2">Cursos a cargo</h4>
+                  <h4 class="heading text-dark"  *ngIf="this.user.usu_perfil == 3">Cursos Inscritos</h4>
                     <div class="mt-5">
                         <div class="progress">
                             <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <div class="mt-3 color-morado"> <span class="text1">{{this.cant_cursos}} cursos a cargo</span> </div>
+                        <div class="mt-3 color-morado"> <span class="text1">{{this.cant_cursos}} cursos inscrito</span> </div>
                         <div>
                           <button *ngIf="this.user.usu_perfil == 2" type="button" (click)="programas(2,this.user.usu_id,this.user.usu_perfil)" class="btn btn-lg bg-color text-white">Ver todos <i class="fa-solid fa-magnifying-glass-plus m-1 color-morado"></i></button>
                           <button *ngIf="this.user.usu_perfil == 3" type="button" (click)="programas(2,this.user.usu_id,this.user.usu_perfil)" class="btn btn-lg btn-warning text-white">Ver todos <i class="fa-solid fa-magnifying-glass-plus m-1 color-morado"></i></button>
@@ -70,12 +72,13 @@
 
                 </div>
                 <div class="mt-5">
-                    <h4 class="heading text-dark">Diplomados a cargo</h4>
+                  <h4 class="heading text-dark"  *ngIf="this.user.usu_perfil == 2">Diplomados a cargo</h4>
+                  <h4 class="heading text-dark"  *ngIf="this.user.usu_perfil == 3">Diplomados Inscritos</h4>
                     <div class="mt-5">
                         <div class="progress" >
                             <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <div class="mt-3 color-morado"> <span class="text1">{{this.cant_diplomados}} diplomados a cargo</span> </div>
+                        <div class="mt-3 color-morado"> <span class="text1">{{this.cant_diplomados}} diplomados inscrito</span> </div>
                         <div>
                           <button *ngIf="this.user.usu_perfil == 2" (click)="programas(3,this.user.usu_id,this.user.usu_perfil)" type="button" class="btn btn-lg bg-color text-white">Ver todos <i class="fa-solid fa-magnifying-glass-plus m-1 color-morado"></i></button>
                           <button *ngIf="this.user.usu_perfil == 3" type="button" (click)="programas(3,this.user.usu_id,this.user.usu_perfil)" class="btn btn-lg btn-warning text-white">Ver todos <i class="fa-solid fa-magnifying-glass-plus m-1 color-morado"></i></button>
